@@ -1,6 +1,14 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
+import z from "zod";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const envSchema = z.object({
+  VITE_SUPABASE_URL: z.string().url(),
+  VITE_SUPABASE_PUBLISHABLE_KEY: z.string().min(1),
+});
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+const env = envSchema.parse(import.meta.env);
+
+export const supabase = createClient(
+  env.VITE_SUPABASE_URL,
+  env.VITE_SUPABASE_PUBLISHABLE_KEY,
+);

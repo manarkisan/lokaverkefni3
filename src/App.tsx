@@ -1,14 +1,23 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './shared/lib/supabase'
+// "use client";
+import { useEffect } from 'react'
 import './App.css'
+import { useSupabase } from './hooks/useSupabase'
 
 
 
 export default  function App() {
 
+  const { products, getProducts } = useSupabase()
+
+  useEffect(() => {
+    getProducts();
+    console.log(products);
+  }, [getProducts]);
 
   return (
     <>
-    <h1>peepeepoopoo</h1></>
+    <h1>peepeepoopoo</h1>
+    
+    </>
   )
 }
