@@ -1,9 +1,8 @@
 
-import { useEffect } from 'react'
 import './App.css'
-import { useSupabase } from './hooks/useSupabase'
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './featured/compoments/layout/Layout'
+import QueryPage from './search/[query]/page'
 
 
 
@@ -18,6 +17,7 @@ export default  function App() {
      <Layout >
       <Routes>
         <Route path="/" element={''}/>
+        <Route path="/search/:query" element={<QueryPage/>}/>
       </Routes>
      </Layout>
      </BrowserRouter>

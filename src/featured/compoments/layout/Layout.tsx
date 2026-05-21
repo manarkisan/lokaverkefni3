@@ -10,6 +10,7 @@ export default function RootLayout({
     <>
       <SearchBar/>
       <Navbar />
+      {children}
     </>
   );
 }

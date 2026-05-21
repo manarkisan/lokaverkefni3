@@ -5,7 +5,7 @@ import type { Product } from "../types/supabase";
 export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [singleProduct, setSingleProduct] = useState<any>(0);
+  // const [singleProduct, setSingleProduct] = useState<any>(0);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -16,5 +16,16 @@ export const useSupabase = () => {
     if (error) console.log(error);
   };
 
-  return { products, getProducts };
+  const getFilteredProducts = async (filter: string) => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .or(`title.ilike.%${filter}%, description.ilike.%${filter}, category.ilike.%${filter}%`);
+    if (data) {
+      setFilteredProducts(data);
+    }
+    if (error) console.log(error);
+  };
+
+  return { products, getProducts, filteredProducts, getFilteredProducts };
 };
