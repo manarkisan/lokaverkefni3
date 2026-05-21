@@ -1,13 +1,18 @@
-import { Menubar, MenubarContent, MenubarGroup, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "#components/ui/menubar";
-
-
+import {
+  Menubar,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "#components/ui/menubar";
 
 export default function Navbar() {
   return (
     <>
       <header>
-      
-
         <Menubar>
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>
