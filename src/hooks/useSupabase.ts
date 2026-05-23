@@ -22,7 +22,7 @@ export const useSupabase = () => {
       .select("*")
       // .ilike("title", `%${filter}%`);
       
-      .or(`title.ilike.%${filter}%, description.ilike.%${filter}%, category.ilike.%${filter}%, name.ilike.%${filter}%`);
+      .or(`name.ilike.%${filter}%, description.ilike.%${filter}%, genre.ilike.%${filter}%`);
     if (data) {
       setFilteredProducts(data);
     }

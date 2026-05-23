@@ -16,7 +16,7 @@ export default function QueryPage() {
   return (
     <>
       <div>Search Results for {query}...</div>
-      <SearchResults products={filteredProducts} />
+      <SearchResults products={[filteredProducts]} />
     </>
   );
 }
