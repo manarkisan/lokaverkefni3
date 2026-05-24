@@ -5,7 +5,7 @@ import type { Product } from "../types/supabase";
 export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  // const [singleProduct, setSingleProduct] = useState<any>(0);
+  const [singleProduct, setSingleProduct] = useState<any>(0);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -21,13 +21,34 @@ export const useSupabase = () => {
       .from("products")
       .select("*")
       // .ilike("title", `%${filter}%`);
-      
-      .or(`name.ilike.%${filter}%, description.ilike.%${filter}%, genre.ilike.%${filter}%`);
+
+      .or(
+        `name.ilike.%${filter}%, description.ilike.%${filter}%, genre.ilike.%${filter}%`,
+      );
     if (data) {
       setFilteredProducts(data);
     }
     if (error) console.log(error);
   };
 
-  return { products, getProducts, filteredProducts, getFilteredProducts };
+  const getSingleProduct = async (id: number) => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", id);
+
+    if (data) {
+      setSingleProduct(data);
+    }
+    if (error) console.log(error);
+  };
+
+  return {
+    products,
+    getProducts,
+    filteredProducts,
+    getFilteredProducts,
+    singleProduct,
+    getSingleProduct,
+  };
 };
