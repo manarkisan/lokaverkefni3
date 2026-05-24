@@ -14,9 +14,13 @@ export default function QueryPage() {
   }, [getFilteredProducts, query]);
 
   return (
-    <>
-      <div>Search Results for {query}...</div>
-      <SearchResults products={[filteredProducts]} />
-    </>
+   <div className="max-w-7xl mx-auto px-4 py-8">
+  <h1 className="text-2xl font-semibold mb-6">
+    Search Results for "{query}"
+  </h1>
+  <SearchResults products={filteredProducts} />
+</div>
   );
 }
+
+
