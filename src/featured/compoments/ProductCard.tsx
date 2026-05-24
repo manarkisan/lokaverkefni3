@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
+import type { Product } from "../../types/supabase";
 
-export default function ProductCard({ product }: { product: any }) {
+export default function ProductCard({ product }: { product: Product }) {
     const navigate = useNavigate()
     const selectProduct = (e: any) => {
         e.preventDefault();

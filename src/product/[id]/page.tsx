@@ -6,7 +6,7 @@ export default function ProductPage() {
     const {singleProduct, getSingleProduct} = useSupabase();
 
     const {id} = useParams();
-console.log(singleProduct)
+
     useEffect(() => {
         getSingleProduct(id);
     }, [getSingleProduct])
