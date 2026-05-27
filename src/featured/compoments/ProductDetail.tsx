@@ -7,22 +7,37 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card"
+import { useEffect, useState } from "react"
 import type { Product } from "../../types/supabase"
+import { Button } from "#components/ui/button"
+import { useNavigate } from "react-router"
 
 
 export default function ProductDetails({product}:{product: Product}) {
+    const [hours, setHours] = useState(0)
+    const [minutes, setMinutes] = useState(1)
+
+    const getRandomNumber = (max: number) => Math.floor(Math.random() * max)
+
+    useEffect(() => {
+        setHours(getRandomNumber(12))
+        setMinutes(getRandomNumber(59))
+    }, []);
+
+    const navigation = useNavigate()
+
     return(
    <Card>
   <CardHeader>
     <CardTitle>{product.name}</CardTitle>
     <CardDescription>{product.description}</CardDescription>
-    <CardAction>Card Action</CardAction>
+    <CardAction><Button onClick={() => navigation("/cart")}>Add to Cart</Button></CardAction>
   </CardHeader>
   <CardContent>
-    <p>Card Content</p>
+    <img src={product.image_url} width={200}/>
   </CardContent>
   <CardFooter>
-    <p>Card Footer</p>
+    <p>Order within{" "} {hours} hrs and {minutes} minutes.</p>
   </CardFooter>
 </Card>
    )

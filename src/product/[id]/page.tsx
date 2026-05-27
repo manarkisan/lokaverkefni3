@@ -9,7 +9,9 @@ export default function ProductPage() {
     const {id} = useParams();
 
     useEffect(() => {
-        getSingleProduct(id);
-    }, [getSingleProduct])
+             if (id) {
+        getSingleProduct(id);}
+    }, [id, getSingleProduct])
+    if (!singleProduct) return <div>Loading...</div>
     return <div><ProductDetails product={singleProduct} /></div>
 }
