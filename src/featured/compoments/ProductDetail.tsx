@@ -7,13 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card"
+import type { Product } from "../../types/supabase"
 
 
-export default function ProductDetails() {
+export default function ProductDetails({product}:{product: Product}) {
+    return(
    <Card>
   <CardHeader>
-    <CardTitle>ProductDetails</CardTitle>
-    <CardDescription>Card Description</CardDescription>
+    <CardTitle>{product.name}</CardTitle>
+    <CardDescription>{product.description}</CardDescription>
     <CardAction>Card Action</CardAction>
   </CardHeader>
   <CardContent>
@@ -23,7 +25,7 @@ export default function ProductDetails() {
     <p>Card Footer</p>
   </CardFooter>
 </Card>
-   
+   )
    
     
 }
