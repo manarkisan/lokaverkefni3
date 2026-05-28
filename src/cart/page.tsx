@@ -1,14 +1,10 @@
-import { useCartStore } from "../store/cartStore";
-import type { Product } from "../types/supabase";
+import Cart from "../featured/compoments/Cart";
 
 export default function CartPage() {
-  const { cart, addToCart, removeFromCart } = useCartStore();
-  //   addToCart(product);
+ 
   return (
     <div>
-      {cart.map((item: Product) => {
-       return <div key={item.id}>{item.name} x _ stk.</div> 
-      })}
+     <Cart />
     </div>
   );
 }

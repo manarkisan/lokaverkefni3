@@ -352,6 +352,7 @@ export type Database = {
       }
       products: {
         Row: {
+          quantity: any
           created_at: string
           currency: string
           description: string | null
