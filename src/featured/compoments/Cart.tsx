@@ -8,13 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card"
-import { useState } from "react";
 import { useCartStore } from "../../store/cartStore";
 import type { Product } from "../../types/supabase"
 
 export default function Cart() {
- const { cart, addToCart, removeFromCart } = useCartStore();
- const [total, setTotal] = useState(0)
+ const { cart, addToCart, removeFromCart, getTotalPrice } = useCartStore();
+ const totalIsk = getTotalPrice()
+
 
 
     return(
@@ -26,11 +26,11 @@ export default function Cart() {
   </CardHeader>
   <CardContent>
     {cart.map((item: Product) => {
-       return <div key={item.id}>{item.name} x _ stk. {item.price_cents} {item.currency}</div> 
+       return <><div key={item.id}>{item.name} x _ stk. {item.price_cents} {item.currency}</div><Button onClick={() => {removeFromCart(item.id)}}>Remove from Cart</Button></>
       })}
   </CardContent>
   <CardFooter>
-    <p>Total price: </p>
+    <div >Total price: {totalIsk} ISK</div>
   </CardFooter>
 </Card>
     )

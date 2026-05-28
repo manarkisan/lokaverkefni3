@@ -8,25 +8,27 @@ type CartStore = {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
+  getTotalPrice: () => number;
 }
 
 
 export const useCartStore = create<CartStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cart: [],
-      addToCart: (product) => set((state) => ({ 
-        cart: [...state.cart, product], 
-       
+      addToCart: (product) => set((state) => ({
+        cart: [...state.cart, product]
       })),
-      removeFromCart: (id) => set((state) => ({ 
-    cart: state.cart.filter(item => item.id !== id) 
-  })),
+      removeFromCart: (id) => set((state) => ({
+        cart: state.cart.filter(item => item.id !== id)
+      })),
+      getTotalPrice: () => {
+        return get().cart.reduce((total, item) => {
+          return total + item.price_cents;
+        }, 0)
+      }
     }),
     { name: 'cart-storage' }
   )
-) 
-
-
-
+)
 
