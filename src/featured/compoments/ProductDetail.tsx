@@ -11,11 +11,13 @@ import { useEffect, useState } from "react"
 import type { Product } from "../../types/supabase"
 import { Button } from "#components/ui/button"
 import { useNavigate } from "react-router"
+import { useCartStore } from "../../store/cartStore"
 
 
 export default function ProductDetails({product}:{product: Product}) {
     const [hours, setHours] = useState(0)
     const [minutes, setMinutes] = useState(1)
+    const { cart, addToCart, removeFromCart } = useCartStore();
 
     const getRandomNumber = (max: number) => Math.floor(Math.random() * max)
 
@@ -31,7 +33,7 @@ export default function ProductDetails({product}:{product: Product}) {
   <CardHeader>
     <CardTitle>{product.name}</CardTitle>
     <CardDescription>{product.description}</CardDescription>
-    <CardAction><Button onClick={() => navigation("/cart")}>Add to Cart</Button></CardAction>
+    <CardAction><Button onClick={() => {addToCart(product); navigation("/cart")}}>Add to Cart</Button></CardAction>
   </CardHeader>
   <CardContent>
     <img src={product.image_url} width={200}/>
