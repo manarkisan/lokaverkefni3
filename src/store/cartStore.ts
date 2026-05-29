@@ -8,6 +8,7 @@ type CartStore = {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
+  clearCart: () =>void;
   getTotalPrice: () => number;
 }
 
@@ -22,6 +23,7 @@ export const useCartStore = create<CartStore>()(
       removeFromCart: (id) => set((state) => ({
         cart: state.cart.filter(item => item.id !== id)
       })),
+      clearCart: () => set({cart: []}),
       getTotalPrice: () => {
         return get().cart.reduce((total, item) => {
           return total + item.price_cents;
