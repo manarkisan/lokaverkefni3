@@ -6,6 +6,7 @@ import QueryPage from './search/[query]/page'
 import ProductPage from './product/[id]/page'
 import ProductDetails from './featured/compoments/ProductDetail'
 import CartPage from './cart/page'
+import CheckoutPage from './checkout/page'
 
 
 
@@ -23,6 +24,7 @@ export default  function App() {
         <Route path="/search/:query" element={<QueryPage/>}/>
         <Route path="/product/:id" element={<ProductPage/>}/>
         <Route path="/cart" element={<CartPage/>}/>
+        <Route path="/checkout" element={<CheckoutPage/>}/>
       </Routes>
      </Layout>
      </BrowserRouter>

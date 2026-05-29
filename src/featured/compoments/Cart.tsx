@@ -8,12 +8,15 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../store/cartStore";
 import type { Product } from "../../types/supabase";
 
 export default function Cart() {
-  const { cart, addToCart, removeFromCart, clearCart, getTotalPrice } = useCartStore();
+  const { cart, addToCart, removeFromCart, clearCart, getTotalPrice } =
+    useCartStore();
   const totalIsk = getTotalPrice();
+  const navigate = useNavigate();
 
   return (
     <Card>
@@ -33,9 +36,8 @@ export default function Cart() {
               </div>
               <Button
                 onClick={() => {
-              addToCart(item);
-              
-            }}
+                  addToCart(item);
+                }}
               >
                 Add more to Cart
               </Button>
@@ -52,7 +54,15 @@ export default function Cart() {
       </CardContent>
       <CardFooter>
         <div>Total price: {totalIsk} ISK</div>
-        <div><Button>Proceed to Checkout</Button></div>
+        <div>
+          <Button
+            onClick={() => {
+              navigate("/checkout");
+            }}
+          >
+            Proceed to Checkout
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
