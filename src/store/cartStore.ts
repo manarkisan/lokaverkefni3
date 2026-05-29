@@ -5,6 +5,7 @@ import { persist } from 'zustand/middleware'
 
 
 type CartStore = {
+  [x: string]: any;
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
