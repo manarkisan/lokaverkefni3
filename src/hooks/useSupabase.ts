@@ -16,6 +16,17 @@ export const useSupabase = () => {
     if (error) console.log(error);
   };
 
+//images
+//   const { data } = supabase.storage
+//     .from('product_assets')
+//     .getPublicUrl('asset_url', {transform: {
+//         width: 200,
+//         height: 200,
+//         resize: 'cover'
+//       },
+// })
+      
+
   const getFilteredProducts = async (filter: string) => {
     const { data, error } = await supabase
       .from("products")

@@ -8,19 +8,29 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card";
+import { useNavigate } from "react-router";
 import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types/supabase";
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice } = useCartStore();
   const totalIsk = getTotalPrice();
+  const navigate = useNavigate();
   return (
     <Card>
       <CardHeader>
         <CardTitle>Shipping Information</CardTitle>
-        <CardDescription>Please review that all information on this page is correct.</CardDescription>
+        <CardDescription>
+          Please review that all information on this page is correct.
+        </CardDescription>
         <CardAction>
-          <Button>Confirm order</Button>
+          <Button
+            onClick={() => {
+              navigate("/confirmorder");
+            }}
+          >
+            Confirm order
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
@@ -28,18 +38,18 @@ export default function CheckoutPage() {
           return (
             <>
               <div key={item.id}>
-                {item.name} 
+                {item.name}
                 <img src={item.image_url} width={100} />
                 {item.price_cents} {item.currency}
               </div>
               <hr />
-              <div>
-                Subtotal: {totalIsk} ISK <br /> Shipping: 500 ISK <br /> 
-                Total (with shipping): {totalIsk + 500} ISK
-              </div>
             </>
           );
-        })}
+        })}{" "}
+        <div>
+          Subtotal: {totalIsk} ISK <br /> Shipping: 500 ISK <br />
+          Total (with shipping): {totalIsk + 500} ISK
+        </div>
       </CardContent>
       <CardFooter>
         <p>Shipping Address</p>

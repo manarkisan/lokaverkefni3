@@ -7,6 +7,7 @@ import ProductPage from './product/[id]/page'
 import ProductDetails from './featured/compoments/ProductDetail'
 import CartPage from './cart/page'
 import CheckoutPage from './checkout/page'
+import OrderComplete from './featured/compoments/OrderComplete'
 
 
 
@@ -25,6 +26,7 @@ export default  function App() {
         <Route path="/product/:id" element={<ProductPage/>}/>
         <Route path="/cart" element={<CartPage/>}/>
         <Route path="/checkout" element={<CheckoutPage/>}/>
+        <Route path="/confirmorder" element={<OrderComplete/>}/>
       </Routes>
      </Layout>
      </BrowserRouter>
