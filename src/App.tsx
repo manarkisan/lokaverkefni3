@@ -17,7 +17,7 @@ export default  function App() {
 
   return (
     <>
-    <h1>peepeepoopoo</h1>
+    <a href='/'><h1>peepeepoopoo</h1></a>
       <BrowserRouter >
      <Layout >
       <Routes>

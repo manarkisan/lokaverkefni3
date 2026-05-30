@@ -13,7 +13,7 @@ import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types/supabase";
 
 export default function CheckoutPage() {
-  const { cart, getTotalPrice } = useCartStore();
+  const { cart, getTotalPrice, clearCart } = useCartStore();
   const totalIsk = getTotalPrice();
   const navigate = useNavigate();
   return (
@@ -27,6 +27,7 @@ export default function CheckoutPage() {
           <Button
             onClick={() => {
               navigate("/confirmorder");
+              clearCart()
             }}
           >
             Confirm order
