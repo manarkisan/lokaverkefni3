@@ -1,5 +1,4 @@
 
-import { describe, it } from 'node:test'
 
 describe('checkout flow', () => {
   it('can add a product and place an order', () => {

@@ -5,9 +5,7 @@ export default defineConfig({
     baseUrl: 'http://localhost:5173',
     specPattern: 'cypress/e2e/**/*.cy.{ts,tsx}',
     supportFile: false,
-    setupNodeEvents(on, config) {
-      return config
-    },
+    
   },
   component: {
     devServer: {
