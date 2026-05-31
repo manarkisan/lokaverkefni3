@@ -21,9 +21,10 @@ export default function CheckoutPage() {
   const handlePlaceOrder = () => {
   placeOrder(cart, getTotalPrice());
   clearCart();
- 
 }
+
   const navigate = useNavigate();
+
   return (
     <Card>
       <CardHeader>
