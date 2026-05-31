@@ -11,10 +11,18 @@ import {
 import { useNavigate } from "react-router";
 import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types/supabase";
+import { useOrderStore } from "../store/orderStore";
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCartStore();
+  const { placeOrder } = useOrderStore();
   const totalIsk = getTotalPrice();
+
+  const handlePlaceOrder = () => {
+  placeOrder(cart, getTotalPrice());
+  clearCart();
+ 
+}
   const navigate = useNavigate();
   return (
     <Card>
@@ -26,8 +34,9 @@ export default function CheckoutPage() {
         <CardAction>
           <Button
             onClick={() => {
+              handlePlaceOrder();
               navigate("/confirmorder");
-              clearCart()
+              
             }}
           >
             Confirm order
