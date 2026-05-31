@@ -5,17 +5,11 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-   "moduleResolution": "bundler",
+    "moduleResolution": "bundler",
     "resolvePackageJsonImports": true,
-     "baseUrl": ".",
-       "target": "es6",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "types": ["cypress", "node", "jest"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    },
-
-  },
-  
+    }
+  }
 }
