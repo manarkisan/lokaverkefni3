@@ -1,13 +1,19 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
 
 export default defineConfig({
-  allowCypressEnv: false,
-
   e2e: {
-     specPattern: "cypress/e2e/**/*.{ts,tsx,cy.ts}", 
+    baseUrl: 'http://localhost:5173',
+    specPattern: 'cypress/e2e/**/*.cy.{ts,tsx}',
+    supportFile: false,
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      return config
     },
   },
-  
-});
+  component: {
+    devServer: {
+      framework: 'react',
+      bundler: 'vite',
+    },
+    specPattern: 'src/**/*.cy.{ts,tsx}',
+  },
+})
