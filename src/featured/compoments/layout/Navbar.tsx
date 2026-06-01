@@ -18,40 +18,32 @@ export default function Navbar() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Vöruflokkar</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
+                 <NavigationMenuLink href={"/confirmorder"}
                 >
-                  <Link href="/confirmorder">Plast</Link>
+                  Plast
                 </NavigationMenuLink>
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
+                 <NavigationMenuLink href={"/login"}
                 >
-                  <Link href="confirmorder">Lífrænt</Link></NavigationMenuLink>
-                  <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
-                >
-                  <Link href="confirmorder">Pappi</Link></NavigationMenuLink>
-                  <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
-                >
-                  <Link href="confirmorder">Almennt</Link>
+                  Pappi
                 </NavigationMenuLink>
-                
-                
+                 <NavigationMenuLink href={"/confirmorder"}
+                >
+                  Lífrænt
+                </NavigationMenuLink>
+                 <NavigationMenuLink href={"/login"}
+                >
+                  Almennt
+                </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              {/* <NavigationMenuTrigger>Login</NavigationMenuTrigger> */}
-             
-                <NavigationMenuLink 
+              <NavigationMenuTrigger>Login</NavigationMenuTrigger> 
+                <NavigationMenuContent>
+                <NavigationMenuLink href={"/login"}
                 >
-                  <Link href={"/login"}>Login</Link>
+                  Login
                 </NavigationMenuLink>
-             
+             </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
