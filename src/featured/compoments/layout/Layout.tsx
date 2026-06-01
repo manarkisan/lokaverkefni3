@@ -9,6 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <>
+     <a href='/'><h1>peepeepoopoo</h1></a>
       <SearchBar/>
       <Navbar />
       <div>{children}</div>

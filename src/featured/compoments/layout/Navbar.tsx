@@ -22,7 +22,7 @@ export default function Navbar() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <Link href="confirmorder">Plast</Link>
+                  <Link href="/confirmorder">Plast</Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   asChild
@@ -43,6 +43,15 @@ export default function Navbar() {
                 
                 
               </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              {/* <NavigationMenuTrigger>Login</NavigationMenuTrigger> */}
+             
+                <NavigationMenuLink 
+                >
+                  <Link href={"/login"}>Login</Link>
+                </NavigationMenuLink>
+             
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

@@ -14,3 +14,11 @@ export const supabase = createClient<Database>(
   env.VITE_SUPABASE_URL,
   env.VITE_SUPABASE_PUBLISHABLE_KEY,
 );
+
+export const getImageUrl = (bucket: string, path: string) => {
+  const { data } = supabase.storage
+    .from(bucket)
+    .getPublicUrl(path)
+  
+  return data.publicUrl
+}
