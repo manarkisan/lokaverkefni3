@@ -45,7 +45,10 @@ export default function Account({ user } : AccountProps) {
     }
   }, [user])
 
-  async function updateProfile(event, avatarUrl) {
+async function updateProfile(
+  event: React.FormEvent<HTMLFormElement>,
+  avatarUrl: string | null
+) {
     event.preventDefault()
 
     setLoading(true)
