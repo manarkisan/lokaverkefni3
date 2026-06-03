@@ -12,7 +12,7 @@ import {
 } from "#components/ui/field";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema, type LoginType } from "./schema.tsx";
+import { LoginSchema, SignupSchema, type LoginType, type SignupType } from "./schema.tsx";
 import { Input } from "#components/ui/input";
 import { supabase } from "../../../shared/lib/supabase.ts";
 import { useState } from "react";
@@ -23,13 +23,13 @@ export default function SignupForm() {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<LoginType>({
-    resolver: zodResolver(LoginSchema),
+  } = useForm<SignupType>({
+    resolver: zodResolver(SignupSchema),
   });
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
 
-  const onSubmit = async (data: LoginType) => {
+  const onSubmit = async (data: SignupType) => {
     setLoading(true)
     const { error } = await supabase.auth.signUp({
       email: data.email,
@@ -40,7 +40,7 @@ export default function SignupForm() {
       console.error(error.message);
       return;
     }
-    console.log("Logged in!");
+    console.log("Signed up!");
     navigate("/account")
   };
 

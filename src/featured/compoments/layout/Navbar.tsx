@@ -42,6 +42,10 @@ export default function Navbar() {
                 >
                   Login
                 </NavigationMenuLink>
+                <NavigationMenuLink href={"/signup"}
+                >
+                  Signup
+                </NavigationMenuLink>
              </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>

@@ -6,7 +6,7 @@ import ProductPage from "./product/[id]/page";
 import CartPage from "./cart/page";
 import CheckoutPage from "./checkout/page";
 import OrderComplete from "./featured/compoments/OrderComplete";
-import LoginForm from "./featured/compoments/login/LoginForm";
+import LoginForm from "./featured/compoments/user/LoginForm";
 
 export default function App() {
   return (
@@ -21,6 +21,7 @@ export default function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/confirmorder" element={<OrderComplete />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/signup" element={<LoginForm />} />
           </Routes>
         </Layout>
       </BrowserRouter>
