@@ -18,7 +18,7 @@ import { supabase } from "../../../shared/lib/supabase.ts";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginForm() {
+export default function SignupForm() {
   const {
     handleSubmit,
     register,
@@ -31,7 +31,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data: LoginType) => {
     setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
     });

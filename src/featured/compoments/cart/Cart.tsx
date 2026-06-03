@@ -9,8 +9,8 @@ import {
   CardTitle,
 } from "#components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { useCartStore } from "../../store/cartStore";
-import type { Product } from "../../types/supabase";
+import { useCartStore } from "../../../store/cartStore";
+import type { Product } from "../../../types/supabase";
 
 export default function Cart() {
   const { cart, addToCart, removeFromCart, clearCart, getTotalPrice } =

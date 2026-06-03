@@ -1,4 +1,4 @@
-import type { Product } from "../../types/supabase";
+import type { Product } from "../../../types/supabase";
 
 export default function CartItem({item}: {item: Product}) {
 

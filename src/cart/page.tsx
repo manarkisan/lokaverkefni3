@@ -1,4 +1,4 @@
-import Cart from "../featured/compoments/Cart";
+import Cart from "../featured/compoments/cart/Cart";
 
 export default function CartPage() {
  

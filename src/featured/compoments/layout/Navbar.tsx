@@ -7,7 +7,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "#components/ui/navigation-menu";
-import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -15,9 +14,9 @@ export default function Navbar() {
       <header>
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
+            <NavigationMenuItem >
               <NavigationMenuTrigger>Vöruflokkar</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="min-w-50">
                  <NavigationMenuLink href={"/confirmorder"}
                 >
                   Plast
@@ -38,10 +37,19 @@ export default function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Login</NavigationMenuTrigger> 
-                <NavigationMenuContent>
+                <NavigationMenuContent className="min-w-50">
                 <NavigationMenuLink href={"/login"}
                 >
                   Login
+                </NavigationMenuLink>
+             </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>My Cart</NavigationMenuTrigger> 
+                <NavigationMenuContent className="min-w-50">
+                <NavigationMenuLink href={"/cart"}
+                >
+                  My Cart
                 </NavigationMenuLink>
              </NavigationMenuContent>
             </NavigationMenuItem>
