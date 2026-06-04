@@ -1,70 +1,87 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '../../../shared/lib/supabase'
-import type { User } from '@supabase/supabase-js'
-import { Button } from '#components/ui/button'
-import { Input } from '#components/ui/input'
+import { useState, useEffect } from "react";
+import { supabase } from "../../../shared/lib/supabase";
+import { Button } from "#components/ui/button";
+import { Input } from "#components/ui/input";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from '#components/ui/card'
+} from "#components/ui/card";
+import { useAuth } from "#hooks/useAuth";
 
-type AccountProps = {
-  user: User
+
+
+export default function UserAccount() {
+  const { user, loading: authLoading } = useAuth();
+const [profileLoading, setProfileLoading] = useState(false);
+  const [fullName, setFullName] = useState<string | null>(null);
+
+
+
+
+
+ useEffect(() => {
+  if (!user) return;
+
+  const userId = user.id;
+
+  let ignore = false;
+
+  async function getProfile() {
+    setProfileLoading(true);
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("full_name, email")
+      .eq("id", userId)
+      .single();
+
+    if (!ignore) {
+      if (error) {
+        console.warn(error);
+      } else if (data) {
+        setFullName(data.full_name);
+      }
+    }
+
+    setProfileLoading(false);
+  }
+
+  getProfile();
+
+  return () => {
+    ignore = true;
+  };
+}, [user]);
+
+   if (authLoading) {
+  return <div>Loading...</div>;
 }
 
-export default function Account({ user }: AccountProps) {
-  const [loading, setLoading] = useState(false)
-  const [fullName, setFullName] = useState<string | null>(null)
-
-
-  useEffect(() => {
-    let ignore = false
-
-    async function getProfile() {
-      setLoading(true)
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('full_name')
-        .eq('id', user.id)
-        .single()
-
-      if (!ignore) {
-        if (error) {
-          console.warn(error)
-        } else if (data) {
-          setFullName(data.full_name)
-    
-        }
-      }
-      setLoading(false)
-    }
-
-    getProfile()
-    return () => { ignore = true }
-  }, [user])
+  if (!user) {
+    return <div>Please log in.</div>;
+  }
 
   async function updateProfile(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setLoading(true)
+    event.preventDefault();
+    if (!user) return;
+    setProfileLoading(true);
 
-    const { error } = await supabase
-      .from('profiles')
-      .upsert({
-        id: user.id,
-        full_name: fullName,
-      })
+    const { error } = await supabase.from("profiles").upsert({
+      id: user.id,
+      full_name: fullName,
+    });
 
     if (error) {
-      alert(error.message)
+      alert(error.message);
     }
-    setLoading(false)
+    setProfileLoading(false);
   }
 
   async function handleSignOut() {
-    await supabase.auth.signOut()
+    await supabase.auth.signOut();
   }
 
   return (
@@ -79,12 +96,7 @@ export default function Account({ user }: AccountProps) {
             <label htmlFor="email" className="text-sm text-muted-foreground">
               Email
             </label>
-            <Input
-              id="email"
-              type="text"
-              value={user.email ?? ''}
-              disabled
-            />
+            <Input id="email" type="text" value={user.email ?? ""} disabled />
           </div>
 
           <div className="flex flex-col gap-1">
@@ -95,17 +107,15 @@ export default function Account({ user }: AccountProps) {
               id="full_name"
               type="text"
               required
-              value={fullName ?? ''}
+              value={fullName ?? ""}
               onChange={(e) => setFullName(e.target.value)}
             />
           </div>
-
-          
         </CardContent>
 
         <CardFooter className="flex flex-col gap-2">
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? 'Saving...' : 'Update Profile'}
+          <Button type="submit" disabled={profileLoading} className="w-full">
+            {profileLoading ? "Saving..." : "Update Profile"}
           </Button>
           <Button
             type="button"
@@ -118,5 +128,5 @@ export default function Account({ user }: AccountProps) {
         </CardFooter>
       </form>
     </Card>
-  )
+  );
 }

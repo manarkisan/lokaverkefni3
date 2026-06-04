@@ -7,6 +7,7 @@ import CartPage from "./cart/page";
 import CheckoutPage from "./checkout/page";
 import OrderComplete from "./featured/compoments/OrderComplete";
 import LoginForm from "./featured/compoments/user/LoginForm";
+import UserAccount from "./featured/compoments/user/UserAccount";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/confirmorder" element={<OrderComplete />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/signup" element={<LoginForm />} />
+            <Route path="/account" element={<UserAccount />} />
           </Routes>
         </Layout>
       </BrowserRouter>
