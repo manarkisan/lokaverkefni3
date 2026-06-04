@@ -1,27 +1,33 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../../shared/lib/supabase'
-import type { User } from '@supabase/supabase-js';
-
+import type { User } from '@supabase/supabase-js'
+import { Button } from '#components/ui/button'
+import { Input } from '#components/ui/input'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from '#components/ui/card'
 
 type AccountProps = {
-  user: User;
-};
+  user: User
+}
 
+export default function Account({ user }: AccountProps) {
+  const [loading, setLoading] = useState(false)
+  const [fullName, setFullName] = useState<string | null>(null)
 
-export default function Account({ user } : AccountProps) {
-  const [loading, setLoading] = useState<string | null>(null);
-  const [username, setUsername] = useState<string | null>(null);
-  const [website, setWebsite] = useState<string | null>(null);
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   useEffect(() => {
     let ignore = false
+
     async function getProfile() {
       setLoading(true)
-
       const { data, error } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select('full_name')
         .eq('id', user.id)
         .single()
 
@@ -29,88 +35,88 @@ export default function Account({ user } : AccountProps) {
         if (error) {
           console.warn(error)
         } else if (data) {
-          setUsername(data.username)
-          setWebsite(data.website)
-          setAvatarUrl(data.avatar_url)
+          setFullName(data.full_name)
+    
         }
       }
-
       setLoading(false)
     }
 
     getProfile()
-
-    return () => {
-      ignore = true
-    }
+    return () => { ignore = true }
   }, [user])
 
-async function updateProfile(
-  event: React.FormEvent<HTMLFormElement>,
-  avatarUrl: string | null
-) {
+  async function updateProfile(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-
     setLoading(true)
 
-    const updates = {
-      id: user.id,
-      username,
-      website,
-      avatar_url: avatarUrl,
-      updated_at: new Date(),
-    }
-
-    const { error } = await supabase.from('profiles').upsert(updates)
+    const { error } = await supabase
+      .from('profiles')
+      .upsert({
+        id: user.id,
+        full_name: fullName,
+      })
 
     if (error) {
       alert(error.message)
-    } else {
-      setAvatarUrl(avatarUrl)
     }
     setLoading(false)
   }
 
+  async function handleSignOut() {
+    await supabase.auth.signOut()
+  }
+
   return (
-    <form onSubmit={updateProfile} className="form-widget">
+    <Card className="max-w-md mx-auto mt-8">
+      <CardHeader>
+        <CardTitle>Your Account</CardTitle>
+      </CardHeader>
 
-      {/* ... */}
+      <form onSubmit={updateProfile}>
+        <CardContent className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="email" className="text-sm text-muted-foreground">
+              Email
+            </label>
+            <Input
+              id="email"
+              type="text"
+              value={user.email ?? ''}
+              disabled
+            />
+          </div>
 
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="username">Name</label>
-        <input
-          id="username"
-          type="text"
-          required
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="url"
-          value={website || ''}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-      </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="full_name" className="text-sm">
+              Full name
+            </label>
+            <Input
+              id="full_name"
+              type="text"
+              required
+              value={fullName ?? ''}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </div>
 
-      <div>
-        <button className="button block primary" type="submit" disabled={loading}>
-          {loading ? 'Loading ...' : 'Update'}
-        </button>
-      </div>
+          
+        </CardContent>
 
-      <div>
-        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
-    </form>
+        <CardFooter className="flex flex-col gap-2">
+          <Button type="submit" disabled={loading} className="w-full">
+            {loading ? 'Saving...' : 'Update Profile'}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={handleSignOut}
+          >
+            Sign Out
+          </Button>
+        </CardFooter>
+      </form>
+    </Card>
   )
 }
