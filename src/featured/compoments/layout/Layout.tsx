@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <>
       <a href="/">
-        <h1 className="flex justify-center">Kaupa rusl</h1>
+        <h1 className="flex justify-center">Buy Some Trash!</h1>
       </a>
       <SearchBar />
       <Navbar /> {user ? <p>Hello, {user.email}</p> : <p>Hello, guest.</p>}

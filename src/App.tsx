@@ -8,6 +8,7 @@ import CheckoutPage from "./checkout/page";
 import OrderComplete from "./featured/compoments/OrderComplete";
 import LoginForm from "./featured/compoments/user/LoginForm";
 import UserAccount from "./featured/compoments/user/UserAccount";
+import Dashboard from "./featured/compoments/Dashboard/Dashboard";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" element={""} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/search/:query" element={<QueryPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />

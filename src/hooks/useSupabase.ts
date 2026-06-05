@@ -6,7 +6,7 @@ export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [singleProduct, setSingleProduct] = useState<Product | null>(null);
-  const [pendant, setPendant] = useState<Product[]>();
+  const [organic, setOrganic] = useState<Product[]>([]);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -17,22 +17,14 @@ export const useSupabase = () => {
     if (error) console.log(error);
   };
 
-//images
-//   const { data } = supabase.storage
-//     .from('product_assets')
-//     .getPublicUrl('asset_url', {transform: {
-//         width: 200,
-//         height: 200,
-//         resize: 'cover'
-//       },
-// })
+
       
 
   const getFilteredProducts = async (filter: string) => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      // .ilike("title", `%${filter}%`);
+      
 
       .or(
         `name.ilike.%${filter}%, description.ilike.%${filter}%, genre.ilike.%${filter}%`,
@@ -56,14 +48,14 @@ export const useSupabase = () => {
     if (error) console.log(error);
   };
 
-  const getPendant = async ()=> {
+  const getOrganic = async ()=> {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .ilike("genre", "pendant");
+      .ilike("genre", "organic");
 
     if (data) {
-      setSingleProduct(data);
+      setOrganic(data);
     }
     if (error) console.log(error);
   };
@@ -75,5 +67,7 @@ export const useSupabase = () => {
     getFilteredProducts,
     singleProduct,
     getSingleProduct,
+    organic,
+    getOrganic
   };
 };

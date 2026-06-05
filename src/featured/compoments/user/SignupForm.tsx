@@ -1,18 +1,13 @@
 import {
   Field,
-  FieldContent,
   FieldDescription,
-  FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
   FieldSet,
-  FieldTitle,
 } from "#components/ui/field";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema, SignupSchema, type LoginType, type SignupType } from "./schema.tsx";
+import { SignupSchema, type SignupType } from "./schema.tsx";
 import { Input } from "#components/ui/input";
 import { supabase } from "../../../shared/lib/supabase.ts";
 import { useState } from "react";
@@ -26,22 +21,22 @@ export default function SignupForm() {
   } = useForm<SignupType>({
     resolver: zodResolver(SignupSchema),
   });
-   const [loading, setLoading] = useState(false);
-   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (data: SignupType) => {
-    setLoading(true)
+    setLoading(true);
     const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
     });
-    setLoading(false)
+    setLoading(false);
     if (error) {
       console.error(error.message);
       return;
     }
     console.log("Signed up!");
-    navigate("/account")
+    navigate("/account");
   };
 
   return (

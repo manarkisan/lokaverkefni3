@@ -5,7 +5,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "#components/ui/navigation-menu";
 
 export default function Navbar() {
@@ -14,48 +13,31 @@ export default function Navbar() {
       <header>
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem >
-              <NavigationMenuTrigger>Vöruflokkar</NavigationMenuTrigger>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
               <NavigationMenuContent className="min-w-50">
-                 <NavigationMenuLink href={"/confirmorder"}
-                >
-                  Plast
+                <NavigationMenuLink href={"/confirmorder"}>
+                  Plastic
                 </NavigationMenuLink>
-                 <NavigationMenuLink href={"/login"}
-                >
-                  Pappi
+                <NavigationMenuLink href={"/login"}>Paper</NavigationMenuLink>
+                <NavigationMenuLink href={"/confirmorder"}>
+                  Organic
                 </NavigationMenuLink>
-                 <NavigationMenuLink href={"/confirmorder"}
-                >
-                  Lífrænt
-                </NavigationMenuLink>
-                 <NavigationMenuLink href={"/login"}
-                >
-                  Almennt
-                </NavigationMenuLink>
+                <NavigationMenuLink href={"/login"}>Generic</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Login</NavigationMenuTrigger> 
-                <NavigationMenuContent className="min-w-50">
-                <NavigationMenuLink href={"/login"}
-                >
-                  Login
-                </NavigationMenuLink>
-                <NavigationMenuLink href={"/signup"}
-                >
-                  Signup
-                </NavigationMenuLink>
-             </NavigationMenuContent>
+              <NavigationMenuTrigger>Login</NavigationMenuTrigger>
+              <NavigationMenuContent className="min-w-50">
+                <NavigationMenuLink href={"/login"}>Login</NavigationMenuLink>
+                <NavigationMenuLink href={"/signup"}>Signup</NavigationMenuLink>
+              </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>My Cart</NavigationMenuTrigger> 
-                <NavigationMenuContent className="min-w-50">
-                <NavigationMenuLink href={"/cart"}
-                >
-                  My Cart
-                </NavigationMenuLink>
-             </NavigationMenuContent>
+              <NavigationMenuTrigger>My Cart</NavigationMenuTrigger>
+              <NavigationMenuContent className="min-w-50">
+                <NavigationMenuLink href={"/cart"}>My Cart</NavigationMenuLink>
+              </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
