@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     handleSubmit,
     register,
@@ -24,17 +25,22 @@ export default function SignupForm() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmit = async (data: SignupType) => {
-    setLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email: data.email,
-      password: data.password,
-    });
-    setLoading(false);
-    if (error) {
-      console.error(error.message);
-      return;
-    }
+ const onSubmit = async (data: SignupType) => {
+  setLoading(true);
+  const { data: authData, error } = await supabase.auth.signUp({
+    email: data.email,
+    password: data.password,
+  });
+  setLoading(false);
+   if (error) {
+    console.error(error.message);
+    setErrorMessage(error.message); 
+    return;
+  }
+    if (authData.session === null) {
+    setErrorMessage('Please check your email to confirm your account before logging in.');
+    return;
+  }
     console.log("Signed up!");
     navigate("/account");
   };
@@ -74,7 +80,7 @@ export default function SignupForm() {
               </p>
             </Field>
             <Field>
-              <input type="submit" value="Login" />
+              <input type="submit" value="Sign Up" />
             </Field>
           </FieldGroup>
         </FieldSet>

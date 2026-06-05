@@ -1,16 +1,11 @@
 import {
   Field,
-  FieldContent,
   FieldDescription,
-  FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
   FieldSet,
-  FieldTitle,
 } from "#components/ui/field";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, type LoginType } from "./schema.tsx";
 import { Input } from "#components/ui/input";
@@ -26,30 +21,30 @@ export default function LoginForm() {
   } = useForm<LoginType>({
     resolver: zodResolver(LoginSchema),
   });
-   const [loading, setLoading] = useState(false);
-   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (data: LoginType) => {
-    setLoading(true)
+    setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
       email: data.email,
       password: data.password,
     });
-    setLoading(false)
+    setLoading(false);
     if (error) {
       console.error(error.message);
       return;
     }
     console.log("Logged in!");
-    navigate("/account")
+    navigate("/account");
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FieldSet className="w-full max-w-xs">
-          <FieldGroup>
-            <Field>
+          <FieldGroup >
+            <Field >
               <FieldLabel htmlFor="username">Email</FieldLabel>
               <FieldDescription>Enter an email.</FieldDescription>
               <Input
@@ -79,7 +74,7 @@ export default function LoginForm() {
               </p>
             </Field>
             <Field>
-              <input type="submit" value="Login" />
+              <input type="submit" value="Login"  />
             </Field>
           </FieldGroup>
         </FieldSet>
@@ -87,3 +82,5 @@ export default function LoginForm() {
     </>
   );
 }
+
+

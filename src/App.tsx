@@ -9,6 +9,7 @@ import OrderComplete from "./featured/compoments/OrderComplete";
 import LoginForm from "./featured/compoments/user/LoginForm";
 import UserAccount from "./featured/compoments/user/UserAccount";
 import Dashboard from "./featured/compoments/Dashboard/Dashboard";
+import SignupForm from "./featured/compoments/user/SignupForm";
 
 export default function App() {
   return (
@@ -20,11 +21,13 @@ export default function App() {
             <Route path="/search/:query" element={<QueryPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
+
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/signup" element={<SignupForm />} />
+
+            <Route path="/account" element={<UserAccount />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/confirmorder" element={<OrderComplete />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/signup" element={<LoginForm />} />
-            <Route path="/account" element={<UserAccount />} />
           </Routes>
         </Layout>
       </BrowserRouter>

@@ -7,7 +7,13 @@ import {
   NavigationMenuTrigger,
 } from "#components/ui/navigation-menu";
 
+import { useAuth } from "#hooks/useAuth";
+
 export default function Navbar() {
+    const { user, signOut } = useAuth();
+  
+
+  
   return (
     <>
       <header>
@@ -37,6 +43,21 @@ export default function Navbar() {
               <NavigationMenuTrigger>My Cart</NavigationMenuTrigger>
               <NavigationMenuContent className="min-w-50">
                 <NavigationMenuLink href={"/cart"}>My Cart</NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>My Account</NavigationMenuTrigger>
+              <NavigationMenuContent className="min-w-50">
+                <NavigationMenuLink href={"/account"}>Account</NavigationMenuLink>
+                {user ? (
+  <NavigationMenuLink onClick={signOut} className="cursor-pointer">
+    Log out
+  </NavigationMenuLink>
+) : (
+  <NavigationMenuLink href="/login">
+    Log in
+  </NavigationMenuLink>
+)}
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

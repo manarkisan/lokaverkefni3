@@ -10,55 +10,51 @@ import {
   CardFooter,
 } from "#components/ui/card";
 import { useAuth } from "#hooks/useAuth";
-
-
+import { useNavigate } from "react-router";
 
 export default function UserAccount() {
-  const { user, loading: authLoading } = useAuth();
-const [profileLoading, setProfileLoading] = useState(false);
+  const { user, loading: authLoading, signOut } = useAuth();
+  const [profileLoading, setProfileLoading] = useState(false);
   const [fullName, setFullName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!user) return;
 
+    const userId = user.id;
 
+    let ignore = false;
 
+    async function getProfile() {
+      setProfileLoading(true);
 
- useEffect(() => {
-  if (!user) return;
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("full_name, email")
+        .eq("id", userId)
+        .single();
 
-  const userId = user.id;
-
-  let ignore = false;
-
-  async function getProfile() {
-    setProfileLoading(true);
-
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("full_name, email")
-      .eq("id", userId)
-      .single();
-
-    if (!ignore) {
-      if (error) {
-        console.warn(error);
-      } else if (data) {
-        setFullName(data.full_name);
+      if (!ignore) {
+        if (error) {
+          console.warn(error);
+        } else if (data) {
+          setFullName(data.full_name);
+        }
       }
+
+      setProfileLoading(false);
     }
 
-    setProfileLoading(false);
+    getProfile();
+
+    return () => {
+      ignore = true;
+    };
+  }, [user]);
+
+  if (authLoading) {
+    return <div>Loading...</div>;
   }
-
-  getProfile();
-
-  return () => {
-    ignore = true;
-  };
-}, [user]);
-
-   if (authLoading) {
-  return <div>Loading...</div>;
-}
 
   if (!user) {
     return <div>Please log in.</div>;
@@ -82,6 +78,7 @@ const [profileLoading, setProfileLoading] = useState(false);
 
   async function handleSignOut() {
     await supabase.auth.signOut();
+    navigate("/login");
   }
 
   return (
@@ -120,10 +117,10 @@ const [profileLoading, setProfileLoading] = useState(false);
           <Button
             type="button"
             variant="outline"
-            className="w-full"
-            onClick={handleSignOut}
+            className="w-full cursor-pointer"
+            onClick={signOut}
           >
-            Sign Out
+            Log out
           </Button>
         </CardFooter>
       </form>

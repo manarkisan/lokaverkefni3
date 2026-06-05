@@ -15,7 +15,7 @@ export default function RootLayout({
       </a>
       <SearchBar />
       <Navbar /> {user ? <p>Hello, {user.email}</p> : <p>Hello, guest.</p>}
-      <div>{children}</div>
+      <div >{children}</div>
     </>
   );
 }
