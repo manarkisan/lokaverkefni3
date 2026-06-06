@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../shared/lib/supabase";
 import type { Product } from "../types/supabase";
+import { SHOP_ID } from "../shared/lib/constants";
 
 export const useSupabase = () => {
   const [product, setProduct] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [singleProduct, setSingleProduct] = useState<Product | null>(null);
-  // const [organic, setOrganic] = useState<Product[]>([]);
+
 
   const getProduct = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -18,14 +19,10 @@ export const useSupabase = () => {
     if (error) console.log(error);
   };
 
-
-      
-
   const getFilteredProducts = async (filter: string) => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      
 
       .or(
         `name.ilike.%${filter}%, description.ilike.%${filter}%, genre.ilike.%${filter}%`,
@@ -40,7 +37,6 @@ export const useSupabase = () => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .eq("id", id)
       .single();
 
     if (data) {
@@ -50,41 +46,28 @@ export const useSupabase = () => {
   };
 
   const getProductsByGenre = (genre: string) => {
-  return products.filter(p => p.Genre === genre);
-}
+    return products.filter((p) => p.Genre === genre);
+  };
 
-const getProducts = async () => {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-  if (data) setProducts(data);
-  if (error) console.log(error);
-}
-
-  // const getOrganic = async ()=> {
-  //   const { data, error } = await supabase
-  //     .from("products")
-  //     .select("*")
-  //     .ilike("genre", "organic");
-
-  //   if (data) {
-  //     setOrganic(data);
-  //   }
-  //   if (error) console.log(error);
-  // };
+  const getProducts = async () => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("shop_id", SHOP_ID)
+      .eq("is_active", true);
+    if (data) setProducts(data);
+    if (error) console.log(error);
+  };
 
   return {
     products,
     getProducts,
-     product,
+    product,
     getProduct,
     filteredProducts,
     getFilteredProducts,
     singleProduct,
     getSingleProduct,
-    getProductsByGenre
-
-    // organic,
-    // getOrganic
+    getProductsByGenre,
   };
 };

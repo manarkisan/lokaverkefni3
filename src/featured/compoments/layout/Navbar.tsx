@@ -8,12 +8,12 @@ import {
 } from "#components/ui/navigation-menu";
 
 import { useAuth } from "#hooks/useAuth";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-    const { user, signOut } = useAuth();
-  
+  const { user, signOut } = useAuth();
+  const GENRES = ["Organic", "Plastic", "Paper", "Generic"];
 
-  
   return (
     <>
       <header>
@@ -21,15 +21,21 @@ export default function Navbar() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
-              <NavigationMenuContent className="min-w-50">
-                <NavigationMenuLink href={"/confirmorder"}>
-                  Plastic
-                </NavigationMenuLink>
-                <NavigationMenuLink href={"/login"}>Paper</NavigationMenuLink>
-                <NavigationMenuLink href={"/confirmorder"}>
-                  Organic
-                </NavigationMenuLink>
-                <NavigationMenuLink href={"/login"}>Generic</NavigationMenuLink>
+              <NavigationMenuContent>
+                <ul className="flex flex-col p-2 w-40">
+                  {GENRES.map((genre) => (
+                    <li key={genre}>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to={`/category/${genre}`}
+                          className="block px-3 py-2 text-sm hover:bg-muted rounded-md"
+                        >
+                          {genre}
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+                </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -48,16 +54,19 @@ export default function Navbar() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>My Account</NavigationMenuTrigger>
               <NavigationMenuContent className="min-w-50">
-                <NavigationMenuLink href={"/account"}>Account</NavigationMenuLink>
+                <NavigationMenuLink href={"/account"}>
+                  Account
+                </NavigationMenuLink>
                 {user ? (
-  <NavigationMenuLink onClick={signOut} className="cursor-pointer">
-    Log out
-  </NavigationMenuLink>
-) : (
-  <NavigationMenuLink href="/login">
-    Log in
-  </NavigationMenuLink>
-)}
+                  <NavigationMenuLink
+                    onClick={signOut}
+                    className="cursor-pointer"
+                  >
+                    Log out
+                  </NavigationMenuLink>
+                ) : (
+                  <NavigationMenuLink href="/login">Log in</NavigationMenuLink>
+                )}
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

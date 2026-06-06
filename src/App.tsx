@@ -10,6 +10,8 @@ import LoginForm from "./featured/compoments/user/LoginForm";
 import UserAccount from "./featured/compoments/user/UserAccount";
 import Dashboard from "./featured/compoments/Dashboard/Dashboard";
 import SignupForm from "./featured/compoments/user/SignupForm";
+import ProtectedRoute from "./featured/compoments/ProtectedRoute";
+import CategoryPage from "./category/page";
 
 export default function App() {
   return (
@@ -20,14 +22,15 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/search/:query" element={<QueryPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/category/:genre" element={<CategoryPage />} />
 
             <Route path="/login" element={<LoginForm />} />
             <Route path="/signup" element={<SignupForm />} />
 
-            <Route path="/account" element={<UserAccount />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/confirmorder" element={<OrderComplete />} />
+            <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+            <Route path="/account" element={<ProtectedRoute><UserAccount /></ProtectedRoute>} />
+            <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path="/confirmorder" element={<ProtectedRoute><OrderComplete /></ProtectedRoute>} />
           </Routes>
         </Layout>
       </BrowserRouter>

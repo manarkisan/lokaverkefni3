@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
     <div>
       {product.name} 
       <img src={product.image_url} width={200}/>
-      <img src={imageUrl} width={200} />
+      
       {product.price_cents} {product.currency} 
       {product.description} 
     </div></Link>

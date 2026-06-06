@@ -1,0 +1,1 @@
+export const SHOP_ID = '5281cb26-bf46-4dee-87c9-e687ffa96c8b';
