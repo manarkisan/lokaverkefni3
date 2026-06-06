@@ -28,7 +28,7 @@ export default function Cart() {
       </CardHeader>
       <CardContent>
        {cart.map((item) => (
-  <div key={item.id} className="flex items-center justify-between py-2">
+  <div key={item.id} data-testid="cart-item" className="flex items-center justify-between py-2">
     <span className="max-w-40 flex">{item.name}</span>
     <img src={item.image_url} className="max-w-40"/>
     <div className="flex items-center gap-2">

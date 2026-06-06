@@ -32,17 +32,7 @@ export default function CheckoutPage() {
         <CardDescription>
           Please review that all information on this page is correct.
         </CardDescription>
-        <CardAction>
-          <Button
-            onClick={() => {
-              handlePlaceOrder();
-              navigate("/confirmorder");
-              
-            }}
-          >
-            Confirm order
-          </Button>
-        </CardAction>
+        
       </CardHeader>
       <CardContent>
         {cart.map((item: Product) => {
@@ -64,7 +54,22 @@ export default function CheckoutPage() {
       </CardContent>
       <CardFooter>
         <p>Shipping Address</p>
+        
       </CardFooter>
+      {/* <Button onClick={handlePlaceOrder} className="w-full">
+  Buy
+</Button> */} 
+<CardAction>
+          <Button
+            onClick={() => {
+              handlePlaceOrder();
+              navigate("/confirmorder");
+              
+            }}
+          >
+            Confirm order
+          </Button>
+        </CardAction>
     </Card>
   );
 }

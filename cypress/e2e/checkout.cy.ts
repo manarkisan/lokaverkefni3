@@ -1,11 +1,26 @@
-
-
-describe('checkout flow', () => {
-  it('can add a product and place an order', () => {
-    cy.visit('/product/08a25347-eb0d-4e12-8952-11dc2c7d3cd3')
+describe('login flow and add to cart flow', () => {
+  it('can add product to cart, login, and checkout order', () => {
+    cy.visit('/')
+    cy.get('a[href*="/product/"]').first().click()
     cy.contains('button', 'Add to Cart').click()
-    cy.visit('/checkout')
-    cy.contains('Crochet Rose').should('exist')
+    cy.visit('/login')
+    cy.get('input[type="email"]').type('igv1@nemandi.ntv.is')
+    cy.get('input[type="password"]').type('password123')
+    cy.get('input[type="submit"]').click()
+     cy.url().should('include', '/account', { timeout: 20000 })
+    cy.visit('/cart')
+    cy.contains('Cart').should('exist')
+  //  cy.contains('text', 'Hello, guest').should('exist')
+  //  cy.contains('text', 'Hello, igv1@nemandi.ntv.is').should('exist')
+   cy.window().then((win) => {
+  const cart = win.localStorage.getItem('cart-storage')
+  console.log('cart in localStorage:', cart)
+})
+ cy.get('[data-testid="cart-item"]').should('have.length.at.least', 1)
+    // cy.visit('/product/a763810c-559e-4aae-956e-81e119e20d57')
+ 
+    // cy.contains('Discarded Paper').should('exist')
+    cy.contains('button', 'Proceed to Checkout').click()
     cy.contains('button', 'Confirm order').click()
     cy.url().should('include', '/confirmorder')
     cy.contains('The order has been completed.').should('exist')
