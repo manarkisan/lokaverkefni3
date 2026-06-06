@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import type { Product } from "../../types/supabase";
-import { getImageUrl } from "../../shared/lib/supabase";
 
 export default function ProductCard({ product }: { product: Product }) {
     const navigate = useNavigate()
@@ -9,7 +8,7 @@ export default function ProductCard({ product }: { product: Product }) {
         navigate(`/product/${product.id}`)
     } 
 
-     const imageUrl = getImageUrl('products', product.slug)
+     
   return (
     <Link href={`/product/${product.id}`} onClick={selectProduct}>
     <div>

@@ -10,10 +10,9 @@ import {
 } from "#components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../../store/cartStore";
-import type { Product } from "../../../types/supabase";
 
 export default function Cart() {
-  const { cart, addToCart, removeFromCart, clearCart, getTotalPrice } =
+  const { cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, getTotalPrice } =
     useCartStore();
   const totalIsk = getTotalPrice();
   const navigate = useNavigate();
@@ -28,29 +27,22 @@ export default function Cart() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        {cart.map((item: Product) => {
-          return (
-            <>
-              <div key={item.id}>
-                {item.name} x _ stk. {item.price_cents} {item.currency}
-              </div>
-              <Button
-                onClick={() => {
-                  addToCart(item);
-                }}
-              >
-                Add more to Cart
-              </Button>
-              <Button
-                onClick={() => {
-                  removeFromCart(item.id);
-                }}
-              >
-                Remove from Cart
-              </Button>
-            </>
-          );
-        })}
+       {cart.map((item) => (
+  <div key={item.id} className="flex items-center justify-between py-2">
+    <span className="max-w-40 flex">{item.name}</span>
+    <img src={item.image_url} className="max-w-40"/>
+    <div className="flex items-center gap-2">
+      <Button variant="outline" size="icon-sm"
+        onClick={() => decreaseQuantity(item.id)}>−</Button>
+      <span>{item.quantity}</span>
+      <Button variant="outline" size="icon-sm"
+        onClick={() => increaseQuantity(item.id)}>+</Button>
+      <span>{(item.price_cents * item.quantity)} {item.currency}</span>
+      <Button variant="destructive" size="icon-sm"
+        onClick={() => removeFromCart(item.id)}>✕</Button>
+    </div>
+  </div>
+))}
       </CardContent>
       <CardFooter>
         <div>Total price: {totalIsk} ISK</div>
