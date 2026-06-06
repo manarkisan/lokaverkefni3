@@ -37,6 +37,7 @@ export const useSupabase = () => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
+      .eq("id", id)
       .single();
 
     if (data) {
@@ -46,7 +47,7 @@ export const useSupabase = () => {
   };
 
   const getProductsByGenre = (genre: string) => {
-    return products.filter((p) => p.Genre === genre);
+    return products.filter((p) => p.genre === genre);
   };
 
   const getProducts = async () => {

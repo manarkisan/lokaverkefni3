@@ -356,7 +356,7 @@ export type Database = {
           created_at: string
           currency: string
           description: string | null
-          Genre: string | null
+          genre: string | null
           id: string
           image_url: string | null
           image_url_2: string | null
@@ -374,7 +374,7 @@ export type Database = {
           created_at?: string
           currency?: string
           description?: string | null
-          Genre?: string | null
+          genre?: string | null
           id?: string
           image_url?: string | null
           image_url_2?: string | null
@@ -392,7 +392,7 @@ export type Database = {
           created_at?: string
           currency?: string
           description?: string | null
-          Genre?: string | null
+          genre?: string | null
           id?: string
           image_url?: string | null
           image_url_2?: string | null
