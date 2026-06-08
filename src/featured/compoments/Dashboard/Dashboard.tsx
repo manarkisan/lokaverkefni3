@@ -14,13 +14,13 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* Hero */}
+      
       <div className="flex flex-col items-center py-12 text-center">
         <h1 className="text-3xl font-bold mb-2">Hello and welcome!</h1>
         <p className="text-muted-foreground">Would you like to buy some trash?</p>
       </div>
 
-      {/* Category sections */}
+      
       {CATEGORIES.map((category) => {
         const categoryProducts = getProductsByGenre(category);
         if (categoryProducts.length === 0) return null;
