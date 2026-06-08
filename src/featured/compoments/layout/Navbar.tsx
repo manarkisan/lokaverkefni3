@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="flex justify-center"> 
+      <header className="flex justify-center bg-indigo-200"> 
         <NavigationMenu>
           <NavigationMenuList className="flex justify-center">
             <NavigationMenuItem>

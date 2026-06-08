@@ -12,11 +12,11 @@ export default function RootLayout({
   return (
     <>
       <a href="/">
-        <h1 className="flex justify-center font-mono text-[40px] font-bold text-mist-600 text-shadow-xs">Buy Some Trash!</h1>
+        <h1 className="flex justify-center font-mono text-[40px] font-bold text-mist-600 text-shadow-2xs bg-indigo-300">Buy Some Trash!</h1>
       </a>
       <SearchBar />
       <Navbar /> 
-      <div className="bg-blue-100 p-5 h-screen">{children}</div>
+      <div className="bg-blue-100  p-5 ">{children}</div>
       <Footer />
     </>
   );

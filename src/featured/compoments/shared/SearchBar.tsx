@@ -3,7 +3,6 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-  InputGroupText,
   InputGroupTextarea,
 } from "#components/ui/input-group";
 import { SearchIcon } from "lucide-react";
