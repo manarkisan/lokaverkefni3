@@ -1,6 +1,8 @@
 This is a project for NTV school in Iceland. My own shop! 
 
-More text and info to be added at a later date.
+Come buy some trash! There's Organic, Paper, Plastic, and Generic trash!
+
+You can signup and login to add to cart, buy and checkout items.
 
 
 
