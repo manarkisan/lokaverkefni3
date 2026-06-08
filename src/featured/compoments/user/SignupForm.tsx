@@ -48,7 +48,7 @@ export default function SignupForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FieldSet className="w-full max-w-xs">
+        <FieldSet className="w-full max-w-xs flex justify-self-center m-10">
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="username">Email</FieldLabel>

@@ -42,8 +42,8 @@ export default function LoginForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FieldSet className="w-full max-w-xs">
-          <FieldGroup >
+        <FieldSet className="w-full max-w-xs flex justify-self-center m-10">
+          <FieldGroup className="flex justify-center">
             <Field >
               <FieldLabel htmlFor="username">Email</FieldLabel>
               <FieldDescription>Enter an email.</FieldDescription>

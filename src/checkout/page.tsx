@@ -19,9 +19,9 @@ export default function CheckoutPage() {
   const totalIsk = getTotalPrice();
 
   const handlePlaceOrder = () => {
-  placeOrder(cart, getTotalPrice());
-  clearCart();
-}
+    placeOrder(cart, getTotalPrice());
+    clearCart();
+  };
 
   const navigate = useNavigate();
 
@@ -32,7 +32,6 @@ export default function CheckoutPage() {
         <CardDescription>
           Please review that all information on this page is correct.
         </CardDescription>
-        
       </CardHeader>
       <CardContent>
         {cart.map((item: Product) => {
@@ -53,23 +52,17 @@ export default function CheckoutPage() {
         </div>
       </CardContent>
       <CardFooter>
-        <p>Shipping Address</p>
-        
-      </CardFooter>
-      {/* <Button onClick={handlePlaceOrder} className="w-full">
-  Buy
-</Button> */} 
-<CardAction>
-          <Button
+        <CardAction>
+          <Button className="flex w-auto"
             onClick={() => {
               handlePlaceOrder();
               navigate("/confirmorder");
-              
             }}
           >
             Confirm order
           </Button>
         </CardAction>
+      </CardFooter>
     </Card>
   );
 }

@@ -7,16 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "#components/ui/card";
+
 import { useEffect, useState } from "react";
 import type { Product } from "../../types/supabase";
 import { Button } from "#components/ui/button";
-import { useNavigate } from "react-router";
 import { useCartStore } from "../../store/cartStore";
+import CartAlert from "./layout/Alert";
 
 export default function ProductDetails({ product }: { product: Product }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(1);
-  const { cart, addToCart, removeFromCart } = useCartStore();
+  const { cart, addToCart } = useCartStore();
+  const [showAlert, setShowAlert] = useState(false);
 
   const getRandomNumber = (max: number) => Math.floor(Math.random() * max);
 
@@ -24,8 +26,6 @@ export default function ProductDetails({ product }: { product: Product }) {
     setHours(getRandomNumber(12));
     setMinutes(getRandomNumber(59));
   }, []);
-
-  const navigation = useNavigate();
 
   return (
     <Card>
@@ -36,15 +36,18 @@ export default function ProductDetails({ product }: { product: Product }) {
           <Button
             onClick={() => {
               addToCart(product);
-              navigation("/cart");
+              setShowAlert(true);
+              setTimeout(() => setShowAlert(false), 3000);
             }}
           >
             Add to Cart
           </Button>
         </CardAction>
+        {showAlert && <CartAlert onClose={() => setShowAlert(false)} />}
       </CardHeader>
       <CardContent>
         <img src={product.image_url} width={200} />
+        {product.price_cents} {product.currency}
       </CardContent>
       <CardFooter>
         <p>

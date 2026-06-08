@@ -16,13 +16,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header>
+      <header className="flex justify-center"> 
         <NavigationMenu>
-          <NavigationMenuList>
+          <NavigationMenuList className="flex justify-center">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="flex flex-col p-2 w-40">
+                <ul className="flex flex-col p-2 w-100">
                   {GENRES.map((genre) => (
                     <li key={genre}>
                       <NavigationMenuLink asChild>
@@ -40,20 +40,20 @@ export default function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Login</NavigationMenuTrigger>
-              <NavigationMenuContent className="min-w-50">
+              <NavigationMenuContent className="min-w-100">
                 <NavigationMenuLink href={"/login"}>Login</NavigationMenuLink>
                 <NavigationMenuLink href={"/signup"}>Signup</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>My Cart</NavigationMenuTrigger>
-              <NavigationMenuContent className="min-w-50">
+              <NavigationMenuContent className="min-w-100">
                 <NavigationMenuLink href={"/cart"}>My Cart</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>My Account</NavigationMenuTrigger>
-              <NavigationMenuContent className="min-w-50">
+              <NavigationMenuContent className="min-w-100">
                 <NavigationMenuLink href={"/account"}>
                   Account
                 </NavigationMenuLink>
@@ -71,6 +71,8 @@ export default function Navbar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <span className="flex align-middle absolute right-0 pt-1">{user ? <p>Hello, {user.email}</p> : <p>Hello, guest.</p>}</span>
+        
       </header>
     </>
   );
