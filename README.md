@@ -14,9 +14,9 @@ This was made using React+Vite, Typescript, Tailwind CSS, Zustand, Cypress, and 
 3. `npm run dev`
 
 <b>Testing</b>
-------
-Cypress is used for testing. 
-'npx cypress open' to open and test.
+
+<p>Cypress is used for testing. </p>
+<p>'npx cypress open' to open and test.</p>
 ------
 <p><i>Screenshots!</i><p>
 <img src="/public/1.png" width="500"> 
@@ -32,7 +32,7 @@ Cypress is used for testing.
 
 ----
 Only if you're interested, a github pages link: https://manarkisan.github.io/lokaverkefni3/
-The doesn't work there. Only visit if interested. (I put it here mostly for me to remember my failures, I mean for archival's sake.)
+The site doesn't work there. Only visit if interested. (I put it here mostly for me to remember my failures, I mean for archival's sake.)
 
 ------------
 .Notes for myself.
