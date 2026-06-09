@@ -35,7 +35,7 @@ export default function LoginForm() {
       console.error(error.message);
       return;
     }
-    loading
+    loading;
     navigate("/account");
   };
 
@@ -44,7 +44,7 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FieldSet className="w-full max-w-xs flex justify-self-center m-10">
           <FieldGroup className="flex justify-center">
-            <Field >
+            <Field>
               <FieldLabel htmlFor="username">Email</FieldLabel>
               <FieldDescription>Enter an email.</FieldDescription>
               <Input
@@ -52,6 +52,7 @@ export default function LoginForm() {
                 type="email"
                 placeholder="rusladulla@kauparusl.is"
                 {...register("email")}
+                className="bg-amber-50"
               />{" "}
               {errors.email && <p role="alert">{errors.email.message}</p>}
             </Field>
@@ -66,6 +67,7 @@ export default function LoginForm() {
                 type="password"
                 placeholder="••••••••"
                 {...register("password")}
+                className="bg-amber-50"
               />
               <p>
                 {" "}
@@ -74,7 +76,7 @@ export default function LoginForm() {
               </p>
             </Field>
             <Field>
-              <input type="submit" value="Login"  />
+              <input type="submit" value="Login" className="bg-amber-50" />
             </Field>
           </FieldGroup>
         </FieldSet>
@@ -82,5 +84,3 @@ export default function LoginForm() {
     </>
   );
 }
-
-

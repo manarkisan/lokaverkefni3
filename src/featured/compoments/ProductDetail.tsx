@@ -18,11 +18,11 @@ export default function ProductDetails({ product }: { product: Product }) {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <Card className="w-md flex justify-center">
+    <Card className="w-lg flex justify-center gap-3">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
-        <CardDescription>{product.description}</CardDescription>
-        <CardAction>
+        
+        <CardAction className="flex flex-col justify-center">
           <Button
             onClick={() => {
               addToCart(product);
@@ -32,12 +32,13 @@ export default function ProductDetails({ product }: { product: Product }) {
           >
             Add to Cart
           </Button>
+          {product.price_cents} {product.currency}
         </CardAction>
         {showAlert && <CartAlert onClose={() => setShowAlert(false)} />}
       </CardHeader>
       <CardContent>
         <img src={product.image_url ?? ""} width={200} />
-        {product.price_cents} {product.currency}
+        <CardDescription className="p-3">{product.description}</CardDescription>
       </CardContent>
     </Card>
   );

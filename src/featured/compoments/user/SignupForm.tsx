@@ -60,6 +60,7 @@ export default function SignupForm() {
                 type="email"
                 placeholder="rusladulla@kauparusl.is"
                 {...register("email")}
+                className="bg-amber-50"
               />{" "}
               {errors.email && <p role="alert">{errors.email.message}</p>}
             </Field>
@@ -73,7 +74,8 @@ export default function SignupForm() {
                 id="password"
                 type="password"
                 placeholder="••••••••"
-                {...register("password")}
+                {...register("password")} 
+                className="bg-amber-50"
               />
               <p>
                 {" "}
@@ -82,7 +84,7 @@ export default function SignupForm() {
               </p>
             </Field>
             <Field>
-              <input type="submit" value="Sign Up" />
+              <input type="submit" value="Sign Up" className="bg-amber-50"/>
             </Field>
           </FieldGroup>
         </FieldSet>
