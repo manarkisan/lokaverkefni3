@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from "#components/ui/alert";
 import { Button } from "#components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CartAlert({ onClose }: { onClose: () => void }) {
  

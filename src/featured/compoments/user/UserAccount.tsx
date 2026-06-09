@@ -76,11 +76,6 @@ export default function UserAccount() {
     setProfileLoading(false);
   }
 
-  async function handleSignOut() {
-    await supabase.auth.signOut();
-    navigate("/login");
-  }
-
   return (
     <Card className="max-w-md mx-auto mt-8">
       <CardHeader>
