@@ -5,7 +5,7 @@ import SmallCard from "../featured/compoments/Dashboard/SmallCard";
 
 export default function CategoryPage() {
   const { genre } = useParams();
-  const { products, getProducts, getProductsByGenre } = useSupabase();
+  const { getProducts, getProductsByGenre } = useSupabase();
 
   useEffect(() => {
     getProducts();

@@ -41,7 +41,9 @@ export default function SignupForm() {
     setErrorMessage('Please check your email to confirm your account before logging in.');
     return;
   }
+  loading
     console.log("Signed up!");
+    console.error(errorMessage);
     navigate("/account");
   };
 

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import SearchResults from "../../featured/compoments/SearchResults";
 
 export default function QueryPage() {
-  const { filteredProducts, getFilteredProducts, products, getProducts } = useSupabase();
+  const { filteredProducts, getFilteredProducts, getProducts } = useSupabase();
   const { query } = useParams<{ query: string }>();
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import {
   InputGroupInput,
 } from "#components/ui/input-group";
 import { SearchIcon } from "lucide-react";
-import { useState, type FormEvent, type SubmitEvent } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {

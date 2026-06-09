@@ -8,7 +8,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = useAuth();
+  const {} = useAuth();
   return (
     <>
       <a href="/">

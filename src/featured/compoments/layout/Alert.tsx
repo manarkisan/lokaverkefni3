@@ -3,7 +3,7 @@ import { Button } from "#components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function CartAlert({ onClose }: { onClose: () => void }) {
- const navigation = useNavigate();
+ 
     return (
     <Alert className="fixed bottom-4 right-4 w-80 shadow-lg z-50">
       <AlertTitle>Item added to cart.</AlertTitle>

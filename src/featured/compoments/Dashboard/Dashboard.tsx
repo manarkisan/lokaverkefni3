@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const CATEGORIES = ['Organic', 'Plastic', 'Paper', 'Generic'];
 
 export default function Dashboard() {
-  const { products, getProducts, getProductsByGenre } = useSupabase();
+  const { getProducts, getProductsByGenre } = useSupabase();
 
   useEffect(() => {
     getProducts();

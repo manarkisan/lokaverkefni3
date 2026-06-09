@@ -35,7 +35,7 @@ export default function LoginForm() {
       console.error(error.message);
       return;
     }
-    console.log("Logged in!");
+    loading
     navigate("/account");
   };
 

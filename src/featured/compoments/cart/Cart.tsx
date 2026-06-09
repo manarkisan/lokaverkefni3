@@ -3,7 +3,6 @@ import {
   Card,
   CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -11,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../../store/cartStore";
 import { Separator } from "#components/ui/separator";
+import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
 
 
 export default function Cart() {
@@ -44,7 +44,7 @@ export default function Cart() {
           >
             <span className="flex flex-col gap-5">
               {item.name}
-              <img src={item.image_url} className="max-w-30 flex" />
+              <img src={item.image_url ?? placeholder} className="max-w-30 flex" />
               <Separator />
             </span>
             <div className="flex items-center gap-2">

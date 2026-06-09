@@ -16,7 +16,7 @@ type OrderStore = {
 
 export const useOrderStore = create<OrderStore>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       orders: [],
       placeOrder: (items, totalPrice) => set((state) => ({
           orders: [...state.orders, {

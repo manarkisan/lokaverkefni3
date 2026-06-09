@@ -13,11 +13,12 @@ import type { Product } from "../../types/supabase";
 import { Button } from "#components/ui/button";
 import { useCartStore } from "../../store/cartStore";
 import CartAlert from "./layout/Alert";
+import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
 
 export default function ProductDetails({ product }: { product: Product }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(1);
-  const { cart, addToCart } = useCartStore();
+  const { addToCart } = useCartStore();
   const [showAlert, setShowAlert] = useState(false);
 
   const getRandomNumber = (max: number) => Math.floor(Math.random() * max);
@@ -46,7 +47,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         {showAlert && <CartAlert onClose={() => setShowAlert(false)} />}
       </CardHeader>
       <CardContent>
-        <img src={product.image_url} width={200} />
+        <img src={product.image_url ?? placeholder} width={200} />
         {product.price_cents} {product.currency}
       </CardContent>
       <CardFooter>
