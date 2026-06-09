@@ -3,32 +3,22 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "#components/ui/card";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Product } from "../../types/supabase";
 import { Button } from "#components/ui/button";
 import { useCartStore } from "../../store/cartStore";
 import CartAlert from "./layout/Alert";
 
 export default function ProductDetails({ product }: { product: Product }) {
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(1);
   const { addToCart } = useCartStore();
   const [showAlert, setShowAlert] = useState(false);
 
-  const getRandomNumber = (max: number) => Math.floor(Math.random() * max);
-
-  useEffect(() => {
-    setHours(getRandomNumber(12));
-    setMinutes(getRandomNumber(59));
-  }, []);
-
   return (
-    <Card>
+    <Card className="m-20">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
         <CardDescription>{product.description}</CardDescription>
@@ -49,11 +39,6 @@ export default function ProductDetails({ product }: { product: Product }) {
         <img src={product.image_url ?? ""} width={200} />
         {product.price_cents} {product.currency}
       </CardContent>
-      <CardFooter>
-        <p>
-          Order within {hours} hrs and {minutes} minutes.
-        </p>
-      </CardFooter>
     </Card>
   );
 }
