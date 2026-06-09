@@ -13,7 +13,7 @@ import type { Product } from "../../types/supabase";
 import { Button } from "#components/ui/button";
 import { useCartStore } from "../../store/cartStore";
 import CartAlert from "./layout/Alert";
-import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
+import placeholder from "../public/favicon.svg"
 
 export default function ProductDetails({ product }: { product: Product }) {
   const [hours, setHours] = useState(0);

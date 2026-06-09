@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types/supabase";
 import { useOrderStore } from "../store/orderStore";
-import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
+import placeholder from "../public/favicon.svg"
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCartStore();

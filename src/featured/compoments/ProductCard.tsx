@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import type { Product } from "../../types/supabase";
-import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
+import placeholder from "../public/favicon.svg"
 
 export default function ProductCard({ product }: { product: Product }) {
   const navigate = useNavigate();

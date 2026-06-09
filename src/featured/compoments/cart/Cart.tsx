@@ -10,8 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../../store/cartStore";
 import { Separator } from "#components/ui/separator";
-import placeholder from "https://manarkisan.neocities.org/art01/kisa2024.png"
-
+import placeholder from "../public/favicon.svg"
 
 export default function Cart() {
   const {
