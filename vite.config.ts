@@ -5,7 +5,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: process.env.VITE_BASEPATH || "/lokaverkefni3",
+  base: process.env.VITE_BASEPATH || "/",
   resolve: {
     alias: {
       "#components": path.resolve(__dirname, "./src/components"),
