@@ -13,11 +13,11 @@ This was made using React+Vite, Typescript, Tailwind CSS, Zustand, Cypress, and 
 2. Copy `.env.example` to `.env` and fill in Supabase credentials
 3. `npm run dev`
 
-<b>Testing</b>
+<b>Testing</b>----
 Cypress is used for testing. 
 'npx cypress open' to open and test.
 ------
-<i>Screenshots!</i>
+<p><i>Screenshots!</i><p>
 <img src="/public/1.png" width="500"> 
 <img src="/public/2.png" width="500"> 
 <img src="/public/2.png" width="500"> 
