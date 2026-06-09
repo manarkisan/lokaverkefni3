@@ -22,7 +22,6 @@ This was made using React+Vite, Typescript, Tailwind CSS, Zustand, Cypress, and 
 <p><i>Screenshots!</i><p>
 <img src="/public/1.png" width="500"> 
 <img src="/public/2.png" width="500"> 
-<img src="/public/2.png" width="500"> 
 <img src="/public/3.png" width="500"> 
 <img src="/public/4.png" width="500"> 
 <img src="/public/5.png" width="500"> 
