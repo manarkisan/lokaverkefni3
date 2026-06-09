@@ -16,7 +16,6 @@ export default function UserAccount() {
   const { user, loading: authLoading, signOut } = useAuth();
   const [profileLoading, setProfileLoading] = useState(false);
   const [fullName, setFullName] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) return;
