@@ -19,18 +19,18 @@ export default function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/search/:query" element={<QueryPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/category/:genre" element={<CategoryPage />} />
+            <Route path="/lokaverkefni3/" element={<Dashboard />} />
+            <Route path="/lokaverkefni3/search/:query" element={<QueryPage />} />
+            <Route path="/lokaverkefni3/product/:id" element={<ProductPage />} />
+            <Route path="/lokaverkefni3/category/:genre" element={<CategoryPage />} />
 
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/signup" element={<SignupForm />} />
+            <Route path="/lokaverkefni3/login" element={<LoginForm />} />
+            <Route path="/lokaverkefni3/signup" element={<SignupForm />} />
 
-            <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
-            <Route path="/account" element={<ProtectedRoute><UserAccount /></ProtectedRoute>} />
-            <Route path="checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-            <Route path="/confirmorder" element={<ProtectedRoute><OrderComplete /></ProtectedRoute>} />
+            <Route path="/lokaverkefni3/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+            <Route path="/lokaverkefni3/account" element={<ProtectedRoute><UserAccount /></ProtectedRoute>} />
+            <Route path="/lokaverkefni3/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path="/lokaverkefni3/confirmorder" element={<ProtectedRoute><OrderComplete /></ProtectedRoute>} />
           </Routes>
         </Layout>
       </BrowserRouter>
