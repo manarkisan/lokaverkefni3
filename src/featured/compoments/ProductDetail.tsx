@@ -18,7 +18,7 @@ export default function ProductDetails({ product }: { product: Product }) {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <Card className="m-20">
+    <Card className="w-md">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
         <CardDescription>{product.description}</CardDescription>

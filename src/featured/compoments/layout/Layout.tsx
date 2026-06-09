@@ -16,7 +16,7 @@ export default function RootLayout({
       </a>
       <SearchBar />
       <Navbar /> 
-      <div className="bg-blue-100  p-5 ">{children}</div>
+      <div className="bg-blue-100 min-h-screen p-5 ">{children}</div>
       <Footer />
     </>
   );
