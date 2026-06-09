@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../../store/cartStore";
 import { Separator } from "#components/ui/separator";
-import placeholder from "../public/favicon.svg"
+
 
 export default function Cart() {
   const {
@@ -43,7 +43,7 @@ export default function Cart() {
           >
             <span className="flex flex-col gap-5">
               {item.name}
-              <img src={item.image_url ?? placeholder} className="max-w-30 flex" />
+              <img src={item.image_url ?? ""} className="max-w-30 flex" />
               <Separator />
             </span>
             <div className="flex items-center gap-2">

@@ -12,7 +12,6 @@ import { useNavigate } from "react-router";
 import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types/supabase";
 import { useOrderStore } from "../store/orderStore";
-import placeholder from "../public/favicon.svg"
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCartStore();
@@ -40,7 +39,7 @@ export default function CheckoutPage() {
             <>
               <div key={item.id}>
                 {item.name}
-                <img src={item.image_url ?? placeholder} width={100} />
+                <img src={item.image_url ?? ""} width={100} />
                 {item.price_cents} {item.currency}
               </div>
               <hr />

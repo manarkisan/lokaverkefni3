@@ -13,7 +13,6 @@ import type { Product } from "../../types/supabase";
 import { Button } from "#components/ui/button";
 import { useCartStore } from "../../store/cartStore";
 import CartAlert from "./layout/Alert";
-import placeholder from "../public/favicon.svg"
 
 export default function ProductDetails({ product }: { product: Product }) {
   const [hours, setHours] = useState(0);
@@ -47,7 +46,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         {showAlert && <CartAlert onClose={() => setShowAlert(false)} />}
       </CardHeader>
       <CardContent>
-        <img src={product.image_url ?? placeholder} width={200} />
+        <img src={product.image_url ?? ""} width={200} />
         {product.price_cents} {product.currency}
       </CardContent>
       <CardFooter>
