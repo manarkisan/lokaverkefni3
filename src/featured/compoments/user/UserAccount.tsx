@@ -10,7 +10,6 @@ import {
   CardFooter,
 } from "#components/ui/card";
 import { useAuth } from "#hooks/useAuth";
-import { useNavigate } from "react-router";
 
 export default function UserAccount() {
   const { user, loading: authLoading, signOut } = useAuth();
