@@ -17,7 +17,8 @@ This was made using React+Vite, Typescript, Tailwind CSS, Zustand, Cypress, and 
 
 <p>Cypress is used for testing. </p>
 <p>'npx cypress open' to open and test.</p>
-------
+
+<hr />
 <p><i>Screenshots!</i><p>
 <img src="/public/1.png" width="500"> 
 <img src="/public/2.png" width="500"> 
