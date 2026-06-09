@@ -19,7 +19,7 @@ export default function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/lokaverkefni3" element={<Dashboard />} />
             <Route path="/lokaverkefni3/search/:query" element={<QueryPage />} />
             <Route path="/lokaverkefni3/product/:id" element={<ProductPage />} />
             <Route path="/lokaverkefni3/category/:genre" element={<CategoryPage />} />
