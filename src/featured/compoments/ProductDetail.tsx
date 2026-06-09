@@ -18,7 +18,7 @@ export default function ProductDetails({ product }: { product: Product }) {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <Card className="w-md">
+    <Card className="w-md flex justify-center">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
         <CardDescription>{product.description}</CardDescription>
